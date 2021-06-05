@@ -19,23 +19,27 @@
 
   </div>
 
-    </div>
-    <p>直近の筋トレメニュー</p>
-  </div>
-   
-  </div>
   {% endblock header %}
 
   {% block content %}
   <div class="container">
+    <p>直近の筋トレメニュー</p>
     {% for item in object_list %}
     <div class="alert alert-success" role="alert">
         <p>タイトル:{{ item.event }}</p>
         <p>日時: {{ item.training_date }}</p>
         <p>重量: {{ item.weight }} kg</p>
         <p>セット数: {{ item.set_number }}</p>
-        <a class="btn btn-warning" href="{% url 'change' item.pk %}" role="button">変更</a>
-        <a class="btn btn-danger" href="#" role="button">削除</a>
+        
+
+        <form method="POST" action="{% url 'index' %}" enctype="multipart/form-data">
+        <input type="hidden" name="delete_pk" value="{{ item.id }}">
+        <input type="hidden" name="input" value="1">
+        {% csrf_token %}
+        <div class="col-12">
+          <button class="btn btn-danger" type="submit">削除</button>
+        </div>
+        </form>
     </div>
     {% endfor %}
   </div>
