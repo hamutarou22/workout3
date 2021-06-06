@@ -9,4 +9,7 @@ urlpatterns = [
     path('record/', views.recordfunc, name='record'),
     path('change/', views.changefunc, name='change'),
     path('table/', views.tablefunc, name='table'),
+    path('signup/', views.signupfunc, name='signup'),
+    path('login/', views.loginfunc, name='login'),
+    path('logout/', views.logoutfunc, name='logout'),
 ]

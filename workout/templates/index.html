@@ -24,6 +24,7 @@
   {% block content %}
   <div class="container">
     <p>直近の筋トレメニュー</p>
+    <a class="btn btn-link" href="{% url 'logout' %}" role="button">logout</a>
     {% for item in object_list %}
     <div class="alert alert-success" role="alert">
         <p>タイトル:{{ item.event }}</p>
